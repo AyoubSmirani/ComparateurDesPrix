@@ -1,0 +1,112 @@
+<app-navallproduit></app-navallproduit>
+<div class="container bg-primary text-center col-md-5 mt-5">
+    <h3><u>S'inscrire</u></h3>
+    <form [formGroup]="inputForm">
+      <div class="mb-3 mt-3">
+        <label for="name" class="form-label">nom</label>
+        <input
+          type="text"
+          class="form-control"
+          id="firstname"
+          placeholder="Enter nom"
+          name="firstname"
+          formControlName="firstname"
+        />
+      </div>
+
+      <div class="mb-3 mt-3">
+        <label for="name" class="form-label">prénom</label>
+        <input
+          type="text"
+          class="form-control"
+          id="lastname"
+          placeholder="Enter prénom"
+          name="lastname"
+          formControlName="lastname"
+        />
+      </div>
+
+  
+      <div
+        class="alert alert-danger"
+        role="alert"
+        *ngIf="
+        !inputForm.pristine && inputForm.controls['lastname'].errors?.['required']"
+      >
+        Nom et prénom obligatoire !
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">adresse email:</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          placeholder="Enter email"
+          name="email"
+          formControlName="email"
+        />
+      </div>
+      <div
+        class="alert alert-danger"
+        role="alert"
+        *ngIf="
+        !inputForm.pristine && inputForm.controls['email'].errors?.['required']"
+      >
+        E-mail obligatoire !
+      </div>
+      <div
+        class="alert alert-danger"
+        role="alert"
+        *ngIf="
+      !inputForm.pristine && inputForm.controls['email'].errors?.['email']"
+      >
+        verifier le syntax d'email
+      </div>
+  
+      <div class="mb-3">
+        <label for="ipwd" class="form-label">mot de passe:</label>
+        <input
+          type="password"
+          class="form-control"
+          id="ipwd"
+          placeholder="Enter mot de passe"
+          name="pswd"
+          formControlName="password"
+        />
+      </div>
+      <div
+        class="alert alert-danger"
+        role="alert"
+        *ngIf="
+      !inputForm.pristine && inputForm.controls['password'].errors?.['required']"
+      >
+        Mot de passe obligatoire !
+      </div>
+    
+ 
+      <div class="mb-3">
+        
+        <input
+          type="hidden"
+          class="form-control"
+          value="user"
+          formControlName="role"
+          
+        />
+      </div>
+
+
+
+
+      <div class="form-check mb-3">
+        <label class="form-check-label me-2">
+          <input class="form-check-input" type="checkbox" name="remember" />
+          j'accepte les
+          <a style="color: #000000" routerLink="#"> conditions d'utilisation</a>
+        </label>
+        <div class="valid-feedback">Valid.</div>
+        <div class="invalid-feedback">Check this checkbox to continue.</div>
+        <br /><br /><button type="submit" class="btn btn-success" (click)="Signup() " [disabled]="!inputForm.valid">inscrire</button>
+      </div>
+    </form>
+  </div>

@@ -1,0 +1,13 @@
+<div  *ngFor="let i of listCommentaire"> 
+    <div class="notifi">
+      <div class="fontBox">
+      <i style="font-size: 50px;" class="material-icons">&#xe7fd;</i>
+       </div>
+        <div class="commentBox">
+            <p *ngIf=" i.nomUser !== name " class="user" >{{i.nomUser}}</p>
+            <p *ngIf=" i.nomUser === name  " class="user" >moi</p>
+           <p class="comment" >{{i.commentaire}}</p>
+           <p class="comment" >réponse admin : {{i.reponseCommentaire}}</p>
+         </div>  
+    </div>       
+  </div>

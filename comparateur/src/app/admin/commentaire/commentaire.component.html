@@ -1,0 +1,36 @@
+<app-admin-nav></app-admin-nav>
+  <div>  
+    <h4 class="titre" >les commentaires :</h4> 
+        <div class="listEmployeeContainer">
+            <div class="gridList">
+                <div *ngFor="let i of data  |   paginate: { itemsPerPage: perPage, currentPage: currentPage, totalItems: totalRecords }">
+                    <div class="card">
+
+                          
+                            <h4  >id : {{i.id_feedback}}</h4>
+                    
+                     
+                            <h5  >id utilisateur : {{i.id_user}}</h5>
+                   
+                  
+                          <!-- <h5>nom produit : {{i.nom_produit}}</h5>  -->  
+                      
+                            <div class="commen">
+                            <h5>commentaire : {{i.commentaire}}</h5>
+                            </div>
+                            <div>
+                                <h5>réponse : {{i.reponseCommentaire}}</h5>
+                                </div>
+                                <button  (click)="openDialog(i)">répondre</button>
+                                <button  (click)="supprimer(i.id_feedback)">supprimer</button>
+                      </div>
+  
+            </div>
+            
+            </div>
+            </div>
+            <div class="paginateContainer">
+                <pagination-controls (pageChange)="currentPage = $event"></pagination-controls> 
+            </div>
+
+</div>

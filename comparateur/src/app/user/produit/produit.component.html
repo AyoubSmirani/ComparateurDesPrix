@@ -1,0 +1,55 @@
+<app-user-navigation></app-user-navigation>
+  <div class="produitContainer">
+<a class="prec" (click)="goBack()">> precedente</a>
+<div class="produitPropriGeneral">
+<div class="img">
+  <img [src]="data.image_produit" alt="">
+</div>
+
+<div class="desc">
+  <h3>{{data.nomProduit}}</h3>
+   <li> {{data.description}}</li>
+   <p style="margin-top: 20px;" *ngIf="parse(data.prix_avant_promo) !== 0">De {{parse(data.prix_avant_promo)}} DT à {{data.prix_produit}} DT  <span style="color: rgb(207, 136, 38);">Économisez {{parse(data.prix_avant_promo) - data.prix_produit}} DT</span></p> 
+   <p style="margin-top: 20px;" *ngIf="parse(data.prix_avant_promo) === 0">Prix : {{data.prix_produit}} DT</p> 
+   <p>Disponibilite:<span class="dispo">{{data.disponibilite}}</span></p>
+   <a (click)="ajouterWishlist(data.nomProduit,data.id_produit,data.image_produit,data.prix_produit)" class="btn btn-light" *ngIf="connected">
+    <i class="fa fa-heart"></i>
+    <span class="ms-1 d-none d-sm-inline-block" >ajouter a la liste de souhaits</span>
+  </a>
+</div>
+
+</div>
+
+<h1 style="color: rgba(0, 0, 0, 0.535);">Comparer les prix</h1>
+<div class="List">
+  <div  *ngFor="let i of AlLdatabyNameProduct"> 
+   <a  style="text-decoration: none;" [href]="i.lien_produit"> 
+      <div  class="notifi-item"   >
+      <div class="imgComparer">
+           <img [src]="i.image_produit" alt="not found">
+      </div>
+      <div class="desc">
+          <h6>{{i.nomProduit}}</h6>
+          <p>{{i.prix_produit}} DT</p>
+          <p style="color: green;" >{{i.disponibilite}}</p>
+         <h4>{{i.nom_site}}</h4> 
+      </div>
+      </div>
+   </a>  
+  </div>
+</div>
+
+
+<h1 style="color: rgba(0, 0, 0, 0.535);">Plus informations</h1>
+<div class="plus">
+  <div class="table" [innerHTML]="data.table_description"></div>
+</div>  
+<div *ngIf="connected" >
+  <textarea [(ngModel)]="feedback.commentaire" name="commentaire" id="commentaire" cols="160" rows="10"></textarea>
+    <button  (click)="commentez(data.nomProduit,data.id_produit)">commentez</button>
+  </div>
+  <p *ngIf="Cfeedback" style="color: red; font-size: 16px;" >* le commentaire ne doit pas étre vide</p>
+</div>
+<div *ngIf="connected" class="Listcomment">
+<app-list-commentaire></app-list-commentaire>
+</div>    

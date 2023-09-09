@@ -1,0 +1,23 @@
+<app-admin-nav></app-admin-nav>
+<h4 class="titre" >le liste des utilisateurs :</h4>
+<div style="width: 100%;  ">
+    <div style="display: grid;  grid-row-gap: 20px; padding-left: 200px;padding-right: 200px;">
+    <div *ngFor="let i of data">
+     <div  class="accountContainer">
+        <div>
+        <h4  >{{i.id}}</h4>    
+        <h5  >{{i.lastname}}</h5>
+        <h5>{{i.firstname}}</h5>
+        <h5>{{i.email}}</h5>
+        
+       
+        <button (click)="delete(i.id)" class="btn btn-delete">
+            <span class="mdi mdi-delete mdi-24px"></span>
+            <span class="mdi mdi-delete-empty mdi-24px"></span>
+            <span>supprimer</span>
+          </button>
+        </div>
+     </div>
+    </div>
+    </div>
+    </div>

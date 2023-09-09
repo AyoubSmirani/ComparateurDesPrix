@@ -1,0 +1,29 @@
+<app-navallproduit></app-navallproduit>
+
+<div class="searchSpace">
+    <input  [(ngModel)]="searchText" placeholder="...recherche" />
+    </div>
+<div class="listEmployeeContainer">
+    <div class="gridList"  >
+        <div *ngFor="let i of data |  filter: { searchText: searchText}  | paginate: { itemsPerPage: perPage, currentPage: currentPage, totalItems: totalRecords }">
+            <p *ngIf=" !i.nomProduit">aucun article trouvé</p>
+            <div class="card" >
+                <img [src]="i.image_produit" (click)="goto(i.id_produit)">
+                <div class="info-container">
+                <div class="info">    
+                <h2>{{i.nomProduit}}</h2>
+                <p>prix :{{i.prix_produit}} dt</p>
+                <p>site : </p><a [href]="i.lien_produit">{{i.nom_site}}</a>
+              </div>
+             
+              </div>
+</div>    
+    </div>
+    </div>
+    <div class="paginateContainer">
+        <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+        </div>
+  
+          
+</div>
+  

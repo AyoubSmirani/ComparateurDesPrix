@@ -1,0 +1,14 @@
+<div class="notifi-box">
+    <div class="h2Container">
+    les commentaires
+    </div>
+    <div class="List">
+        <div  *ngFor="let i of data"> 
+            <div  class="notifi-item" (click)="goto(i.id_produit)" >
+                <div><h5>nom produit :</h5><h6> {{i.nom_produit}}</h6></div>
+                <div><h6>commentaire :</h6><p> {{i.commentaire}}</p></div>
+                <div><h6>réponse du commentaire :</h6><p> {{i.reponseCommentaire}}</p> </div>
+            </div>  
+        </div>
+    </div>
+    </div>

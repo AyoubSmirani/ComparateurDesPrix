@@ -1,0 +1,18 @@
+<div class="notifi-box">
+    <div class="h2Container">
+    les produits
+    </div>
+    <div class="List">
+        <div  *ngFor="let i of data"> 
+            <div  class="notifi-item" (click)="goto(i.id_produit)" >
+            <div class="img">
+                 <img [src]="i.image_produit" alt="not found">
+            </div>
+            <div class="desc">
+                <h6>{{i.nom_produit}}</h6>
+                <p>{{i.prix_produit}} DT</p>
+            </div>
+            </div>  
+        </div>
+    </div>
+    </div>

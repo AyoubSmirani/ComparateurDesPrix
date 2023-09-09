@@ -1,0 +1,74 @@
+<app-navallproduit></app-navallproduit>
+<div  class="container bg-primary text-center col-md-5 mt-5">
+    <h3><u>S'identifier</u></h3>
+    <br />
+    <form [formGroup]="inputFormulaire">
+      <!--email-->
+      <div class="form-group">
+        <label for="email">adresse e-mail</label>
+        <input
+          type="email"
+          id="email"
+          class="form-control"
+          ngModel
+          name="email"
+          formControlName="email"
+        />
+        <br />
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="
+            !inputFormulaire.pristine && inputFormulaire.controls['email'].errors?.['required']"
+        >
+          E-mail obligatoire
+        </div>
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="
+          !inputFormulaire.pristine && inputFormulaire.controls['email'].errors?.['email']"
+        >
+          syntaxe n'est pas correct
+        </div>
+      </div>
+      <!--password-->
+      <div class="form-group">
+        <label for="password">mot de passse</label>
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          ngModel
+          name="password"
+          formControlName="password"
+        />
+        <br />
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="
+        !inputFormulaire.pristine && inputFormulaire.controls['password'].errors?.['required']"
+        >
+          mot de passe obligatoire
+        </div>
+        <div
+           *ngIf="error"
+          class="alert alert-danger"
+          role="alert"
+         
+        >
+          {{error}} 
+        </div>
+      </div>
+      <button type="submit" class="btn btn-success mt-2" [disabled]="!inputFormulaire.valid" (click)="onSubmit()">
+        Sign-in
+      </button>
+      <b>{{ test }}</b>
+    </form>
+    <b
+      ><a routerLink="/inscrire" style="color: #fff" 
+        >Nouvel utilisateur? cliquez pour vous inscrire</a
+      ></b
+    >
+  </div>
